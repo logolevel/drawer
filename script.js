@@ -41,3 +41,22 @@ toggleButton.addEventListener('click', () => {
   }
 });
 
+
+// Обработчик для изменения изображения при клике
+document.addEventListener('DOMContentLoaded', function() {
+    const images = document.querySelectorAll('.content__image-image');
+
+    images.forEach(image => {
+        image.addEventListener('click', function() {
+            const defaultUrl = this.dataset.defaultUrl;
+            const secondUrl = this.dataset.secondUrl;
+            
+            if (this.src === defaultUrl) {
+                this.src = secondUrl;
+            } else {
+                this.src = defaultUrl;
+            }
+        });
+    });
+});
+

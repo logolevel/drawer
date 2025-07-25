@@ -1,0 +1,124 @@
+/* Общие стили */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.header,
+.content__description,
+.content__banners {
+    border: 2px solid red;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.header {
+    height: 60px; /* Фиксированная высота для расчета отступов */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.content__description, .content__banners {
+    position: relative;
+    background-color: white; /* Фон, чтобы перекрывать контент под ними */
+}
+
+.content__extra-space {
+    height: 100vh; /* Просто для создания длинной прокрутки */
+    padding: 20px;
+    position: relative;
+    background-color: #fff;
+}
+
+/* Стили для Desktop (по умолчанию) */
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+}
+
+.content__banners {
+    flex: 1 1 100%; /* На всю ширину */
+}
+
+.content__image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.drawer {
+    display: none;
+}
+
+.banner-top {
+    position: relative;
+    z-index: 1;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    height: 20px;
+}
+
+
+/* Стили для Mobile (при ширине экрана 768px и меньше) */
+@media (max-width: 768px) {
+    .content {
+        display: block; /* Элементы идут друг за другом */
+        padding: 0;
+    }
+
+    .drawer {
+        z-index: 1;
+        display: block;
+        width: 100%;
+        position: sticky;
+        top: 60px;
+        background: white;
+    }
+
+    .drawer__toggle {
+        width: 100%;
+    }
+
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        width: 100%;
+        transition: all 0.1s ease;
+    }
+
+    .header.is-stuck {
+        background-color: #fff;
+    }
+    
+    .content__image-wrapper {
+        padding-bottom: 112%;
+    }
+
+    .content__image {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .sticky-sentinel {
+        height: 1px;
+        pointer-events: none;
+    }
+}
